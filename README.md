@@ -1,4 +1,4 @@
-# Controle-de-finan-as
+# Controle de finanças
 Projeto desenvolvido com a Rocketseat  :rocket:
 
 
