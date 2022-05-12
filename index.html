@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!--Atraves dessas configuraçoes abaixo eu consigo que meu projeto seja mais responsivo..vai trabalhar o conteudo dentro da viewoport-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev.finance$</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!--FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2? família=Poppins:ital,wght@0,100;0.400;0.700;1.100;1.400;1.700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <img src="./assets/logo.svg" alt="Logo Dev Finance" />
+    </header>
+
+    <main class="container">
+      <!--preciso usar alem de tegs para organizar o html os atributos no caso os goblais e globais junto com identificador (balance e transaction)-->
+      <section id="balance">
+        <!--Foi adicionado uma classe para configurar no css para aqueles que não conseguem ler-->
+        <h2 class="sr_only">Balanço</h2>
+        <!--vou ter duas section e no primeiro section 3 divs que sao os cartoes ou containers (a dive é so para deixar com mais identação e nao contem um significado) -->
+        <div class="card">
+          <!--span é uma caixa para eu poder manter meu elemento em linha é inline..-->
+          <h3>
+            <span> Entradas </span>
+            <!--img é elemento inline e por isso fica do lado de entrada o icone-->
+            <img src="./assets/income.svg" alt="imagem de entradas" />
+          </h3>
+          <p id="incomeDisplay">R$ 0,00</p>
+        </div>
+
+        <div class="card">
+          <h3>
+            <span> Saidas </span>
+            <img src="./assets/expense.svg" alt="imagem de saida" />
+          </h3>
+          <p id="expenseDisplay">R$ 0,00</p>
+        </div>
+
+        <div class="card total">
+          <h3>
+            <span> Total </span>
+            <img src="./assets/total.svg" alt="imagem de total" />
+          </h3>
+          <p id="totalDisplay">R$ 0,00</p>
+        </div>
+      </section>
+
+      <section id="transaction">
+        <h2 class="sr_only">Transações</h2>
+
+        <!--onclick="modal.open()"  É quando eu clicar em nova transação abre madal em funcionalidades-->
+        <a href="#" onclick="modal.open()" class="button new"
+          >+ Nova Transação</a
+        >
+
+        <!--tabela (table) e duas seçoes (thead é o cabeçalho e tbody é o corpo da  tabela)...data é dados entao uma tabela de dados-->
+        <table id="data-table">
+          <thead>
+            <!--aqui coloco um tr que é uma linha e um th que é o conteudo-->
+            <tr>
+              <th>Descrição</th>
+              <th>Valor</th>
+              <th>Data</th>
+
+              <!--para colocar uma coluna a mais ..e deixa sem nada-->
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+
+    <!--aqui é a caixa transparente-->
+    <div class="modal-overlay">
+      <!--aqui é a caixinha branca-->
+      <div class="modal">
+        <!--form é um prenchimento e tambem identifica o input... input para capturar dados do usuario o que ele vai digitar-->
+        <div id="form">
+          <h2>Nova Transação</h2>
+          <form action="" onsubmit="Form.submit(event)">
+            <div class="input-group">
+              <!--class="sr-only" = é para pessoas com necessidades e esconde o descrição da tela..é para os leitores de tela...label sig para quem? no caso é para description o for-->
+              <label class="sr_only" for="description">Descrição</label>
+
+              <!--placeholder é uma ideia de valor que aparece na barra para indicar o que digitar e nao tem um value-->
+              <!--input é entrada de dados
+              o name é para eu enviar o nome que esta no meu formulario em form action ... geralmente é acompanhado de umm value-->
+              <input
+                type="text"
+                id="description"
+                name="description"
+                placeholder="Descrição"
+              />
+            </div>
+
+            <div class="input-group">
+              <label class="sr_only" for="amount">Valor</label>
+
+              <!--da para usar o input para diversos tipos de funcionalidades-->
+              <input
+                type="number"
+                step="0.01"
+                id="amount"
+                name="amount"
+                placeholder="Descrição"
+              />
+
+              <!--small deixa o texto em um tipo pequeno..é so uma mensagem de ajuda...class="help" é para explicar que é uma ideia de ajuda.-->
+              <small class="help"
+                >Use o sinal - negativo para despesas e, (virgula) para casas
+                decimais.</small
+              >
+            </div>
+
+            <div class="input-group">
+              <label class="sr_only" for="date">Data</label>
+
+              <input type="date" id="date" name="date" placeholder="Data" />
+            </div>
+
+            <div class="input-group action">
+              <a href="#" onclick="modal.close()" class="button cancel"
+                >Cancelar</a
+              >
+
+              <!--como tenho so um botao entao nao preciso colocar submit...ja no formulario o primeiro botao que ele encontrar no formulario ele vai entender que é o botao de subimisao de envio isso é quando tenho mais de um botao e quero que so um tenha submit-->
+              <button>Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div>Control.finance$</div>
+    </footer>
+
+    <script src="./scripts.js"></script>
+  </body>
+</html>
